@@ -11,13 +11,14 @@ def get_user_graph
     longestStreak = 0
     currentStreak = 0
     todaysDate = DateTime.now.to_date
+    startDate = Date.strptime("{ 2019-05-22 }", "{ %Y-%m-%d }")
     committedToday = false
     days.each_with_index do |day, index|
-      date= Date.strptime("{ #{day["data-date"]} }", "{ %Y-%m-%d }")
-      numCommits = day["data-count"].to_i
-      commitCount += numCommits
-      if date < todaysDate
+      date = Date.strptime("{ #{day["data-date"]} }", "{ %Y-%m-%d }")
+      if date < todaysDate && date >= startDate
+        numCommits = day["data-count"].to_i
         if numCommits != 0
+          commitCount += numCommits
           currentStreak += 1
           if currentStreak > longestStreak
             longestStreak = currentStreak
@@ -29,10 +30,9 @@ def get_user_graph
           currentStreak = 0
         end
       end
-      if date == todaysDate && numCommits != 0
+      if date == todaysDate && !numCommits.nil?
         committedToday = true
       end
-
     end
     display_user_streaks(commitCount, longestStreak, currentStreak, committedToday)
 end
