@@ -52,4 +52,5 @@ def data_scraper(url)
     Nokogiri::HTML(open(url))
 end
 
+cohort =  ["kemmerle", "andxhav", "Andrew-Randall", "Anthonyhelka", "BorisMargarian", "dc-anthony", "Hurlyburly2", "baker914", "ericfrancis313", "HGarcia22",  "jwinnfeild2517", "joeSzaf", "JoshuaTPereira", "kmsrankin", "IndayLi", "MikeMaven", "mwellman17", "nkim1225", "paigiethefriendlydragon",  "KingDad", "rokarim", "myYearOfCode", "sromelus", "Tasneem52"]
 get_user_graph
