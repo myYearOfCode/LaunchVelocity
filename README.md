@@ -1,5 +1,5 @@
 # README
-
+[![Codeship Status for myYearOfCode/LaunchVelocity](https://app.codeship.com/projects/6a5d6320-62d6-0137-3ff6-3a865b8a8fbe/status?branch=master)](https://app.codeship.com/projects/344480)
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
