@@ -2,8 +2,8 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-def get_user_graph
-    main_url = "https://github.com/myYearOfCode"
+def get_user_graph(gitHubUsername)
+    main_url = "https://github.com/#{gitHubUsername}"
     data = data_scraper(main_url)
     graph = data.search(".js-calendar-graph-svg")
     days = graph.search("g").search("g").search("rect")
@@ -17,27 +17,26 @@ def get_user_graph
       date = Date.strptime("{ #{day["data-date"]} }", "{ %Y-%m-%d }")
       if date < todaysDate && date >= startDate
         numCommits = day["data-count"].to_i
-        if numCommits != 0
+        if numCommits > 0
           commitCount += numCommits
           currentStreak += 1
           if currentStreak > longestStreak
             longestStreak = currentStreak
           end
         else
-          if currentStreak > 0
-            puts "streak of #{currentStreak} days broken."
-          end
           currentStreak = 0
         end
       end
-      if date == todaysDate && !numCommits.nil?
+      if date == todaysDate && day["data-count"].to_i
         committedToday = true
       end
     end
-    display_user_streaks(commitCount, longestStreak, currentStreak, committedToday)
+    display_user_streaks(gitHubUsername, commitCount, longestStreak, currentStreak, committedToday)
 end
 
-def display_user_streaks(commitCount, longestStreak, currentStreak, committedToday)
+def display_user_streaks(gitHubUsername, commitCount, longestStreak, currentStreak, committedToday)
+  puts "####################################"
+  puts gitHubUsername
   puts "#{commitCount} total commits"
   puts "Your current streak is #{currentStreak} days."
   puts "Your longest streak is #{longestStreak} days."
@@ -53,4 +52,7 @@ def data_scraper(url)
 end
 
 cohort =  ["kemmerle", "andxhav", "Andrew-Randall", "Anthonyhelka", "BorisMargarian", "dc-anthony", "Hurlyburly2", "baker914", "ericfrancis313", "HGarcia22",  "jwinnfeild2517", "joeSzaf", "JoshuaTPereira", "kmsrankin", "IndayLi", "MikeMaven", "mwellman17", "nkim1225", "paigiethefriendlydragon",  "KingDad", "rokarim", "myYearOfCode", "sromelus", "Tasneem52"]
-get_user_graph
+
+cohort.each do |gitHubUsername|
+  get_user_graph(gitHubUsername)
+end
