@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_192503) do
+ActiveRecord::Schema.define(version: 2019_05_26_171723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2019_05_25_192503) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gitHubUsername"
+    t.string "photoUrl"
+    t.boolean "sendReminders"
+    t.time "reminderTime"
+    t.integer "currentStreak"
+    t.integer "longestStreak"
+    t.integer "totalCommits"
+    t.integer "totalGreenDays"
+    t.boolean "committedToday"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
