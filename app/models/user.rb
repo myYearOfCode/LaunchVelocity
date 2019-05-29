@@ -8,7 +8,7 @@ class User < ApplicationRecord
     graph = data.search(".js-calendar-graph-svg")
     days = graph.search("g").search("g").search("rect")
     totalCommits = 0
-    longestStreak = self.longestStreak
+    longestStreak = self.longestStreak || 0
     currentStreak = 0
     totalGreenDays = 0
     todaysDate = DateTime.now.to_date
@@ -34,7 +34,7 @@ class User < ApplicationRecord
       end
     end
     photoUrl = scrape_profile_pic(data)
-    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl)
+    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl, graph: graph)
   end
 
   def scrape_profile_pic(data)
