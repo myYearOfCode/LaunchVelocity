@@ -8,7 +8,7 @@ class User < ApplicationRecord
     graph = data.search(".js-calendar-graph-svg")
     days = graph.search("g").search("g").search("rect")
     totalCommits = 0
-    longestStreak = self.longestStreak
+    longestStreak = self.longestStreak || 0
     currentStreak = 0
     totalGreenDays = 0
     todaysDate = DateTime.now.to_date
