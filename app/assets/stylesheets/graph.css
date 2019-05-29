@@ -1,0 +1,22 @@
+text.month {
+    fill: #767676;
+    font-size: 10px;
+}
+
+text.wday {
+    fill: #767676;
+    font-size: 9px;
+}
+
+body {
+    background-color: #fff;
+    color: #24292e;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.userWrapper {
+  padding: 5px 5px 5px 25px;
+  border: 1px solid black;
+}
