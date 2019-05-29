@@ -34,7 +34,7 @@ class User < ApplicationRecord
       end
     end
     photoUrl = scrape_profile_pic(data)
-    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl)
+    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl, graph: graph)
   end
 
   def scrape_profile_pic(data)
