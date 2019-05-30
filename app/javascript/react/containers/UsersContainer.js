@@ -44,7 +44,6 @@ class UsersContainer extends Component {
   render () {
     return(
       <div>
-        hello world
         {this.renderUserComponents()}
       </div>
     )

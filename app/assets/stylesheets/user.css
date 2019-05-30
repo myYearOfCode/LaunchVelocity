@@ -1,0 +1,16 @@
+.profile_pic{
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.user_wrapper{
+  flex-wrap: nowrap;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user_left{
+  display: flex;
+  justify-content: space-between;
+}
