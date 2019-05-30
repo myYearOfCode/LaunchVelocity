@@ -1,7 +1,10 @@
 import React from 'react'
+import UsersContainer from "../containers/UsersContainer"
 
 export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+  return (
+    <UsersContainer />
+  )
 }
 
 export default App
