@@ -3,7 +3,7 @@ class ReminderMailer < ApplicationMailer
     @user = user
 
     mail(
-      to: user.email
+      to: user.email,
       subject: "A reminder to Git!"
     )
   end
