@@ -56,3 +56,5 @@ gem 'shoulda-matchers', group: [:development, :test]
 gem 'devise'
 gem 'foundation-rails', '~> 5.0'
 gem 'webpacker', '~> 3.3'
+gem 'mailcatcher'
+gem 'whenever'
