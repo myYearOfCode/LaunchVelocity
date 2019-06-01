@@ -6,3 +6,4 @@ end
 every '0 * * * *' do
   rake "users:scrape"
 end
+ 

@@ -9,6 +9,9 @@ class UsersContainer extends Component {
     }
   }
 
+  compare(a, b){
+    return b.currentStreak - a.currentStreak;
+  }
   fetchUsers() {
     fetch('/api/v1/users')
     .then(response => {
@@ -22,6 +25,7 @@ class UsersContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      body.sort(this.compare)
       this.setState({users: body})
     })
     .catch(error => console.error( `Error in fetch: ${error.message}` ));
