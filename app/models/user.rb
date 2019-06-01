@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'pry'
 
 class User < ApplicationRecord
   def scrape
@@ -29,7 +30,7 @@ class User < ApplicationRecord
           currentStreak = 0
         end
       end
-      if date == todaysDate && day["data-count"].to_i
+      if date == todaysDate && day["data-count"].to_i > 0
         committedToday = true
       end
     end
