@@ -5,13 +5,34 @@ class UsersContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      recipeName: ''
+      sortByStreak: true,
+      sortByGreenDays: false,
+      sortByLongestStreak: false
     }
+    this.fetchUsers = this.fetchUsers.bind(this);
+    this.compare = this.compare.bind(this)
+    this.sortUsers = this.sortUsers.bind(this)
+  }
+
+  sortUsers(event){
+    this.setState({
+      sortByStreak: false,
+      sortByGreenDays: false,
+      sortByLongestStreak: false
+    });
+    this.setState({ [event.target.value]: true })
   }
 
   compare(a, b){
-    return b.currentStreak - a.currentStreak;
+     if (this.state.sortByStreak) {
+      return b.currentStreak - a.currentStreak
+    } else if (this.state.sortByGreenDays) {
+      return b.totalGreenDays - a.totalGreenDays
+    } else {
+      return b.longestStreak - a.longestStreak
+    }
   }
+
   fetchUsers() {
     fetch('/api/v1/users')
     .then(response => {
@@ -25,7 +46,6 @@ class UsersContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      body.sort(this.compare)
       this.setState({users: body})
     })
     .catch(error => console.error( `Error in fetch: ${error.message}` ));
@@ -34,7 +54,8 @@ class UsersContainer extends Component {
   renderUserComponents() {
     let output = []
     if (this.state.users && this.state.users.length > 0){
-      this.state.users.forEach(user => {
+      let order = this.state.users.sort(this.compare)
+      order.forEach(user => {
         output.push(<User user={user} key={user.gitHubUsername}/>)
       })
     }
@@ -48,6 +69,12 @@ class UsersContainer extends Component {
   render () {
     return(
       <div>
+        <label>Sort Users By:</label>
+        <select onChange={this.sortUsers}>
+          <option value="sortByStreak">Current Streak</option>
+          <option value="sortByGreenDays">Most Green Days</option>
+          <option value="sortByLongestStreak">Longest Streak</option>
+        </select>
         {this.renderUserComponents()}
       </div>
     )
