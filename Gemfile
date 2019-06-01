@@ -30,7 +30,7 @@ gem 'active_model_serializers'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-
+  gem 'mailcatcher'
 end
 
 group :development do
@@ -57,4 +57,5 @@ gem 'mailcatcher', group: [:development, :test]
 gem 'devise'
 gem 'foundation-rails', '~> 5.0'
 gem 'webpacker', '~> 3.3'
+
 gem 'whenever'

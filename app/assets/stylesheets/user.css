@@ -1,6 +1,6 @@
 .profile_pic{
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 120px;
+  max-height: 120px;
 }
 
 .user_wrapper{
@@ -13,4 +13,20 @@
 .user_left{
   display: flex;
   justify-content: space-between;
+}
+
+.user_right{
+  padding-right: 25px;
+}
+
+.user_photo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 25px;
+}
+
+.userWrapper {
+  padding: 25px 5px 25px 25px;
+  border: 1px solid black;
 }

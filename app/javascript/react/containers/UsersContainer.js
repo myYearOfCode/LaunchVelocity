@@ -32,13 +32,13 @@ class UsersContainer extends Component {
   }
 
   renderUserComponents() {
-  let output = []
-  if (this.state.users && this.state.users.length > 0){
-    this.state.users.forEach(user => {
-      output.push(<User user={user}/>)
-    })
-  }
-  return output
+    let output = []
+    if (this.state.users && this.state.users.length > 0){
+      this.state.users.forEach(user => {
+        output.push(<User user={user} key={user.gitHubUsername}/>)
+      })
+    }
+    return output
   }
 
   componentDidMount(){
