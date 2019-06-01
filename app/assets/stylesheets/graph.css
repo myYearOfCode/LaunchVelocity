@@ -16,7 +16,6 @@ body {
     line-height: 1.5;
 }
 
-.userWrapper {
-  padding: 5px 5px 5px 25px;
-  border: 1px solid black;
+.userGraph{
+  flex-shrink: 10;
 }
