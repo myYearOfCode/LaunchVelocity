@@ -18,19 +18,19 @@ const User = (props) => {
         dangerouslySetInnerHTML={{ __html: props.user.graph }}
       />
       <div className="user_right">
-        <div>
-          Current Streak: {props.user.currentStreak} days
+        <div className="currentStreak">
+          Current Streak: {props.user.currentStreak} {props.user.currentStreak == 1 ? "day" : "days"}
         </div>
-        <div>
-          Longest Streak: {props.user.longestStreak} days
+        <div className="longestStreak">
+          Longest Streak: {props.user.longestStreak} {props.user.longestStreak == 1 ? "day" : "days"}
         </div>
-        <div>
-          Total Commits: {props.user.totalCommits} commits
+        <div className="totalCommits">
+          Total Commits: {props.user.totalCommits} {props.user.totalCommits == 1 ? "commit" : "commits"}
         </div>
-        <div>
-          Total Days with commits: {props.user.totalGreenDays} days
+        <div className="totalGreenDays">
+          Total Days with commits: {props.user.totalGreenDays} {props.user.totalGreenDays == 1 ? "day" : "days"}
         </div>
-        <div>
+        <div className="committedToday">
           Committed Today: {props.user.committedToday ? "yes" :  "not yet"}
         </div>
       </div>
