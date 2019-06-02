@@ -4,10 +4,13 @@
 }
 
 .user_wrapper{
-  flex-wrap: nowrap;
-  flex-direction: row;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
+  padding: 25px 5px 25px 25px;
+  border: 1px solid black;
 }
 
 .user_left{
@@ -24,9 +27,4 @@
   flex-direction: column;
   justify-content: center;
   margin-right: 25px;
-}
-
-.userWrapper {
-  padding: 25px 5px 25px 25px;
-  border: 1px solid black;
 }
