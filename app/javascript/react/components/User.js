@@ -2,7 +2,7 @@ import React from 'react';
 
 const User = (props) => {
   return(
-    <div className="userWrapper">
+    <div className="user_wrapper">
       <div className="user_left">
         <div className="user_photo">
           <a href={`http://www.github.com/${props.user.gitHubUsername}`}>
