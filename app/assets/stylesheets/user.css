@@ -1,11 +1,10 @@
 .profile_pic{
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 125px;
+  max-height: 125px;
 }
 
 .user_wrapper{
   display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
