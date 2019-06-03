@@ -9,7 +9,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.sort_by {|user| user.currentStreak}
+    @users = User.all
     render json: @users
   end
 end
