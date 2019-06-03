@@ -5,6 +5,7 @@ class UsersContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
+      users: [],
       sortByStreak: true,
       sortByGreenDays: false,
       sortByLongestStreak: false
@@ -20,7 +21,7 @@ class UsersContainer extends Component {
       sortByGreenDays: false,
       sortByLongestStreak: false
     });
-    this.setState({ [event.target.value]: true })
+    this.setState({ [event.target.value]: true });
   }
 
   compare(a, b){
@@ -52,14 +53,13 @@ class UsersContainer extends Component {
   }
 
   renderUserComponents() {
-    let output = []
-    if (this.state.users && this.state.users.length > 0){
-      let order = this.state.users.sort(this.compare)
-      order.forEach(user => {
-        output.push(<User user={user} key={user.gitHubUsername}/>)
+    if (this.state.users.length > 0){
+      let sorted = this.state.users.sort(this.compare)
+      let output = sorted.map(user => {
+        return (<User user={user} key={user.gitHubUsername}/>)
       })
+      return output
     }
-    return output
   }
 
   componentDidMount(){
