@@ -11,7 +11,8 @@ class User < ApplicationRecord
     longestStreak = self.longestStreak || 0
     currentStreak = 0
     totalGreenDays = 0
-    todaysDate = DateTime.now.to_date
+    todaysDate = DateTime.now.in_time_zone("Eastern Time (US & Canada)")
+
     startDate = Date.strptime("{ 2019-05-22 }", "{ %Y-%m-%d }")
     committedToday = false
     days.each_with_index do |day, index|
