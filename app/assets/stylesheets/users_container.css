@@ -1,0 +1,18 @@
+.filterSelectorDiv{
+  padding: 10px 25px 10px 10px;
+}
+
+.filterSelector{
+  max-width: 250px;
+}
+
+.aboutMe{
+  padding: 10px 0 10px 25px;
+  max-width: 50vw;
+}
+
+.introBar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
