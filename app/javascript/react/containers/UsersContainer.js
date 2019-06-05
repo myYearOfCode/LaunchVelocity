@@ -69,12 +69,14 @@ class UsersContainer extends Component {
   render () {
     return(
       <div>
-        <label>Sort Users By:</label>
-        <select onChange={this.sortUsers}>
-          <option value="sortByStreak">Current Streak</option>
-          <option value="sortByGreenDays">Most Green Days</option>
-          <option value="sortByLongestStreak">Longest Streak</option>
-        </select>
+        <div className="filterSelectorDiv">
+          <label>Sort Users By:</label>
+          <select className="filterSelector" onChange={this.sortUsers}>
+            <option value="sortByStreak">Current Streak</option>
+            <option value="sortByGreenDays">Most Green Days</option>
+            <option value="sortByLongestStreak">Longest Streak</option>
+          </select>
+        </div>
         {this.renderUserComponents()}
       </div>
     )
