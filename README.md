@@ -1,24 +1,8 @@
-# README
+# Launch Velocity
 [![Codeship Status for myYearOfCode/LaunchVelocity](https://app.codeship.com/projects/6a5d6320-62d6-0137-3ff6-3a865b8a8fbe/status?branch=master)](https://app.codeship.com/projects/344480)
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Launch Velocity is a dashboard to view github commits for each member of Launch Academy's 24th cohort. It allows you to sort by a variety of criteria and click through to check out a person's github profile. It can be seen [here on heroku](https://launch-velocity.herokuapp.com/)
 
-* Ruby version
+It is hyper-specific in it's current state, but it could easily be forked to cover a different group of developers.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![LaunchVelocity screen grab](/docs/img/LaunchVelocity_screenShot.png?raw=true "Screen shot")
