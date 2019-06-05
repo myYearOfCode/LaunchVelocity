@@ -30,7 +30,6 @@ class User < ApplicationRecord
           currentStreak = 0
         end
       end
-      puts "#{date} #{(todaysDate - 1.days)} #{date > (todaysDate - 1.days)}"
       if date == todaysDate && day["data-count"].to_i > 0
         committedToday = true
       end
