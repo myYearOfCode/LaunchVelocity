@@ -11,6 +11,7 @@ class User < ApplicationRecord
     longestStreak = self.longestStreak || 0
     currentStreak = 0
     totalGreenDays = 0
+    currentLapse = 0
     todaysDate = Date.strptime(DateTime.now.in_time_zone("Eastern Time (US & Canada)").strftime("%Y-%m-%d"), "%Y-%m-%d")
     startDate = Date.strptime("{ 2019-05-22 }", "{ %Y-%m-%d }")
     committedToday = false
@@ -23,11 +24,13 @@ class User < ApplicationRecord
           totalGreenDays += 1
           totalCommits += numCommits
           currentStreak += 1
+          currentLapse = 0
           if currentStreak > longestStreak
             longestStreak = currentStreak
           end
         else
           currentStreak = 0
+          currentLapse += 1
         end
       end
       if date == todaysDate && day["data-count"].to_i > 0
@@ -35,7 +38,7 @@ class User < ApplicationRecord
       end
     end
     photoUrl = scrape_profile_pic(data)
-    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl, graph: graph)
+    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, currentLapse: currentLapse, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl, graph: graph)
   end
 
   def scrape_profile_pic(data)

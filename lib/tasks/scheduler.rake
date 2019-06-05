@@ -12,7 +12,7 @@ desc "Sends a reminder email when a user has not committed in awhile"
 task :remind => :environment do
   users = User.all
   users.each do |user|
-    if !user.committedToday
+    if user.currentLapse >= 5
       ReminderMailer.new_reminder(user).deliver_now
     end
   end
