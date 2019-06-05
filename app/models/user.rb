@@ -11,12 +11,13 @@ class User < ApplicationRecord
     longestStreak = self.longestStreak || 0
     currentStreak = 0
     totalGreenDays = 0
-    todaysDate = DateTime.now.in_time_zone("Eastern Time (US & Canada)")
+    todaysDate = Date.strptime(DateTime.now.in_time_zone("Eastern Time (US & Canada)").strftime("%Y-%m-%d"), "%Y-%m-%d")
     startDate = Date.strptime("{ 2019-05-22 }", "{ %Y-%m-%d }")
     committedToday = false
+    # Time.now
     days.each_with_index do |day, index|
       date = Date.strptime("{ #{day["data-date"]} }", "{ %Y-%m-%d }")
-      if date < todaysDate && date >= startDate
+      if date <= todaysDate && date >= startDate
         numCommits = day["data-count"].to_i
         if numCommits > 0
           totalGreenDays += 1
@@ -29,7 +30,7 @@ class User < ApplicationRecord
           currentStreak = 0
         end
       end
-      if date >= todaysDate && day["data-count"].to_i > 0
+      if date == todaysDate && day["data-count"].to_i > 0
         committedToday = true
       end
     end
