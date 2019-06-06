@@ -57,5 +57,5 @@ gem 'mailcatcher', group: [:development, :test]
 gem 'devise'
 gem 'foundation-rails', '~> 5.0'
 gem 'webpacker', '~> 3.3'
-
+gem 'sendgrid-ruby'
 gem 'whenever'
