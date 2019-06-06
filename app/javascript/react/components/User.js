@@ -33,6 +33,9 @@ const User = (props) => {
         <div className="committedToday">
           Committed Today: {props.user.committedToday ? "yes" :  "not yet"}
         </div>
+        <div className="currentLapse">
+          Lapse Since Last Commit: {props.user.currentLapse} {props.user.currentLapse == 1 ? "day" :  "days"}
+        </div>
       </div>
     </div>
   )
