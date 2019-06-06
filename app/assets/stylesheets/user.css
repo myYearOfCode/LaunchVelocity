@@ -5,8 +5,9 @@
 
 .user_wrapper{
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 25px 5px 25px 25px;
   border: 1px solid black;
@@ -26,4 +27,15 @@
   flex-direction: column;
   justify-content: center;
   margin-right: 25px;
+}
+
+.user_main_view{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 25px 5px 25px 25px;
+  border: 1px solid black; */
 }
