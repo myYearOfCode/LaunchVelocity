@@ -17,5 +17,25 @@ body {
 }
 
 .userGraph{
-  flex-shrink: 10;
+  overflow: hidden;
+}
+
+svg{
+  float: right;
+}
+
+.user_graph_phone{
+  display: none;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 525px) {
+  .userGraph{
+    display: none;
+  }
+  .user_graph_phone{
+    display: unset;
+    overflow: hidden;
+    width: 80vw;
+  }
 }
