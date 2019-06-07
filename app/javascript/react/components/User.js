@@ -40,6 +40,26 @@ const User = (props) => {
         className="user_graph_phone"
         dangerouslySetInnerHTML={{ __html: props.user.graph }}
       />
+      <div className="user_right">
+        <div className="currentStreak">
+          Current Streak: {props.user.currentStreak} {props.user.currentStreak == 1 ? "day" : "days"}
+        </div>
+        <div className="longestStreak">
+          Longest Streak: {props.user.longestStreak} {props.user.longestStreak == 1 ? "day" : "days"}
+        </div>
+        <div className="totalCommits">
+          Total Commits: {props.user.totalCommits} {props.user.totalCommits == 1 ? "commit" : "commits"}
+        </div>
+        <div className="totalGreenDays">
+          Total Days with commits: {props.user.totalGreenDays} {props.user.totalGreenDays == 1 ? "day" : "days"}
+        </div>
+        <div className="committedToday">
+          Committed Today: {props.user.committedToday ? "yes" :  "not yet"}
+        </div>
+        <div className="currentLapse">
+          Lapse Since Last Commit: {props.user.currentLapse} {props.user.currentLapse == 1 ? "day" :  "days"}
+        </div>
+      </div>
     </div>
   )
 }
