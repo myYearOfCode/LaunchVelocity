@@ -14,12 +14,15 @@
 }
 
 .user_left{
+  margin-left: 20px;
   display: flex;
   justify-content: space-between;
+  min-width: 150px;
 }
 
 .user_right{
   padding-right: 25px;
+  min-width: 260px;
 }
 
 .user_photo{
@@ -36,6 +39,4 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  /* padding: 25px 5px 25px 25px;
-  border: 1px solid black; */
 }

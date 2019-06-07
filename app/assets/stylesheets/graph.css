@@ -17,20 +17,26 @@ body {
 }
 
 .userGraph{
-  flex-shrink: 10;
+  overflow: hidden;
+}
+
+svg{
+  float: right;
 }
 
 .user_graph_phone{
   display: none;
-  width: 100vw;
-
+  /* width: 100vw; */
+  overflow: hidden;
 }
-@media only screen and (max-width: 1200px) {
+
+@media only screen and (max-width: 525px) {
   .userGraph{
     display: none;
   }
   .user_graph_phone{
-    display: flex;
-    justify-content: center;
+    display: unset;
+    overflow: hidden;
+    width: 80vw;
   }
 }
