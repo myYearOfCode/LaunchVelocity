@@ -15,4 +15,9 @@ namespace :users do
       end
     end
   end
+  desc "Emails Mike to test SendGrid"
+  task :testemail => :environment do
+    mike = User.where(email: "mikemaven@gmail.com")[0]
+    ReminderMailer.new_reminder(mike).deliver_now
+  end
 end
