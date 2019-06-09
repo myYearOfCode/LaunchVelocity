@@ -12,6 +12,14 @@ namespace :users do
     users.each do |user|
       if user.currentLapse >= 5
         ReminderMailer.new_reminder(user).deliver_now
+        client = Twilio::REST::Client.new
+        if !user.phone_number == nil
+          client.messages.create({
+            from: ENV['TWILIO_PHONE_NUMBER'],
+            to: user.phone_number,
+            body: 'Hey, just reminding you to commit some code to GitHub today! -Mike and Ross'
+          })
+        end
       end
     end
   end
@@ -19,5 +27,11 @@ namespace :users do
   task :testemail => :environment do
     mike = User.where(email: "mikemaven@gmail.com")[0]
     ReminderMailer.new_reminder(mike).deliver_now
+    client = Twilio::REST::Client.new
+    client.messages.create({
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: '+14019321206',
+      body: 'Hey, just reminding you to commit some code to GitHub today! -Mike and Ross'
+    })
   end
 end
