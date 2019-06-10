@@ -12,4 +12,16 @@ class Api::V1::UsersController < ApplicationController
     @users = User.all
     render json: @users
   end
+
+  def update
+    if user_signed_in?
+      puts current_user.update_attributes(user_params)
+      render json: current_user
+    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:gitHubUsername, :sendReminders, :email)
+  end
 end
