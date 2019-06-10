@@ -8,8 +8,8 @@ export const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={UsersContainer} />
         <Route path="/account" component={UpdateUser} />
+        <Route path="/" component={UsersContainer} />
       </Switch>
     </BrowserRouter>
   )
