@@ -24,7 +24,7 @@ class UpdateUser extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({gitHubUsername: body.gitHubUsername, email: body.email, sendReminders: body.sendReminders})
+      this.setState({id: body.id, gitHubUsername: body.gitHubUsername, email: body.email, sendReminders: body.sendReminders})
     })
     .catch(error => console.error( `Error in fetch: ${error.message}` ));
   }
@@ -53,7 +53,7 @@ class UpdateUser extends Component {
     event.preventDefault()
     const token = decodeURIComponent(this.readCookie("X-CSRF-Token"));
     console.log("submitting form")
-    fetch("/api/v1/users/22",{
+    fetch(`/api/v1/users/${this.state.id}`,{
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
