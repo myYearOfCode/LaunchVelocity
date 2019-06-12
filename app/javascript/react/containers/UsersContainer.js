@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
+
 import User from "../components/User"
+import UpdateUser from "../components/UpdateUser"
 
 class UsersContainer extends Component {
   constructor(props){
@@ -8,12 +11,13 @@ class UsersContainer extends Component {
       users: [],
       sortByStreak: true,
       sortByGreenDays: false,
-      sortByLongestStreak: false
+      sortByLongestStreak: false,
+      sendReminders: false
     }
     this.fetchUsers = this.fetchUsers.bind(this);
     this.compare = this.compare.bind(this)
     this.sortUsers = this.sortUsers.bind(this)
-  }
+    }
 
   sortUsers(event){
     this.setState({
