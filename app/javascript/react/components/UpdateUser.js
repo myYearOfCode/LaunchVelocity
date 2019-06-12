@@ -7,6 +7,26 @@ class UpdateUser extends Component {
     super(props);
     this.state = {
     }
+    this.handleConsumedChange = this.handleConsumedChange.bind(this);
+    this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    fetch('/api/v1/current_user')
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText}) ,`
+        let error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({gitHubUsername: body.gitHubUsername, email: body.email, sendReminders: body.sendReminders})
+    })
+    .catch(error => console.error( `Error in fetch: ${error.message}` ));
   }
 
   handleConsumedChange(event) {
@@ -43,7 +63,7 @@ class UpdateUser extends Component {
       body: JSON.stringify({
         user: {
           gitHubUsername: this.state.gitHubUsername,
-          sendReminders: this.state.sendReminders,
+          sendReminders: this.state.sendReminders ? "true" : "false",
           email: this.state.email
         }
       })
@@ -65,7 +85,16 @@ class UpdateUser extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  getCheckboxStatus() {
+    if (this.state.sendReminders === true){
+      return(
+        "checked"
+      )
+    }
+  }
+
   render () {
+    console.log(this.getCheckboxStatus())
     return(
       <form className="callout" onSubmit={this.handleUserFormSubmit}>
         <TextField
@@ -84,6 +113,7 @@ class UpdateUser extends Component {
          type="checkbox"
          name="sendReminders"
          onChange={this.handleConsumedChange}
+         checked={this.getCheckboxStatus()}
        />
        Send me reminders.
        <br/>
