@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
 import TextField from "./TextField"
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 class UpdateUser extends Component {
   constructor(props){
     super(props);
     this.state = {
+      phone: ''
     }
     this.handleConsumedChange = this.handleConsumedChange.bind(this);
     this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
@@ -62,6 +65,7 @@ class UpdateUser extends Component {
       },
       body: JSON.stringify({
         user: {
+          phone_number: this.state.phone,
           gitHubUsername: this.state.gitHubUsername,
           sendReminders: this.state.sendReminders ? "true" : "false",
           email: this.state.email
@@ -110,6 +114,13 @@ class UpdateUser extends Component {
               label='email address'
               name='email'
               handlerFunction={this.handleConsumedChange}
+            />
+            <PhoneInput
+              showCountrySelect={false}
+              country="US"
+              placeholder="Enter phone number"
+              value={ this.state.phone }
+              onChange={ phone => this.setState({ phone }) }
             />
            <input
              type="checkbox"
