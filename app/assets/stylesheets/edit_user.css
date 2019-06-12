@@ -1,0 +1,9 @@
+.edit_user{
+  padding-top: 25px;
+  width: 300px;
+}
+
+.form_wrapper{
+  display: flex;
+  justify-content: center;
+}

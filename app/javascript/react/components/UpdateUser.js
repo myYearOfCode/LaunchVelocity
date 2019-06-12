@@ -96,29 +96,33 @@ class UpdateUser extends Component {
   render () {
     console.log(this.getCheckboxStatus())
     return(
-      <form className="callout" onSubmit={this.handleUserFormSubmit}>
-        <TextField
-          content={this.state.gitHubUsername || ""}
-          label='github username'
-          name='gitHubUsername'
-          handlerFunction={this.handleConsumedChange}
-        />
-        <TextField
-          content={this.state.email || ""}
-          label='email address'
-          name='email'
-          handlerFunction={this.handleConsumedChange}
-        />
-       <input
-         type="checkbox"
-         name="sendReminders"
-         onChange={this.handleConsumedChange}
-         checked={this.getCheckboxStatus()}
-       />
-       Send me reminders.
-       <br/>
-       <input type="submit" value="Submit"/>
-      </form>
+      <div className="form_wrapper">
+        <div className="edit_user">
+          <form className="callout" onSubmit={this.handleUserFormSubmit}>
+            <TextField
+              content={this.state.gitHubUsername || ""}
+              label='github username'
+              name='gitHubUsername'
+              handlerFunction={this.handleConsumedChange}
+            />
+            <TextField
+              content={this.state.email || ""}
+              label='email address'
+              name='email'
+              handlerFunction={this.handleConsumedChange}
+            />
+           <input
+             type="checkbox"
+             name="sendReminders"
+             onChange={this.handleConsumedChange}
+             checked={this.getCheckboxStatus()}
+           />
+           Send me reminders.
+           <br/>
+           <input type="submit" value="Submit"/>
+          </form>
+        </div>
+      </div>
     )
   }
 }
