@@ -37,5 +37,6 @@
   "scripts": {
     "start": "./bin/webpack-dev-server",
     "test": "node_modules/.bin/karma start karma.conf.js"
-  }
+  },
+  "version": "1.16.0"
 }
