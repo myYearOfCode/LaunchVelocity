@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PhoneInput from 'react-phone-number-input'
 
 import TextField from "./TextField"
-import PhoneInput from 'react-phone-number-input'
 
 class UpdateUser extends Component {
   constructor(props){
