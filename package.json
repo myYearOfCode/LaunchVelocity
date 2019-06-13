@@ -11,6 +11,7 @@
     "prop-types": "~15.6.0",
     "react": "~15.4.2",
     "react-dom": "~15.4.2",
+    "react-phone-number-input": "^2.3.17",
     "react-router-dom": "5.0.0",
     "redbox-react": "1.6.0"
   },
@@ -36,5 +37,6 @@
   "scripts": {
     "start": "./bin/webpack-dev-server",
     "test": "node_modules/.bin/karma start karma.conf.js"
-  }
+  },
+  "version": "1.16.0"
 }

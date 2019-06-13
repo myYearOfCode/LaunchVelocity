@@ -19,7 +19,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       expect(response.status).to eq(200)
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json.length).to be(13)
+      expect(returned_json.length).to be(14)
       expect(returned_json["id"]).to eq(@valid_user.id)
       expect(returned_json["email"]).to eq(@valid_user.email)
       expect(returned_json["gitHubUsername"]).to eq(@valid_user.gitHubUsername)

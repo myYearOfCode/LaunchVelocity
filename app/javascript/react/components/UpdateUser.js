@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PhoneInput from 'react-phone-number-input'
 
 import TextField from "./TextField"
 
@@ -24,7 +25,7 @@ class UpdateUser extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({gitHubUsername: body.gitHubUsername, email: body.email, sendReminders: body.sendReminders})
+      this.setState({id: body.id, gitHubUsername: body.gitHubUsername, email: body.email, sendReminders: body.sendReminders, phone: body.phone_number})
     })
     .catch(error => console.error( `Error in fetch: ${error.message}` ));
   }
@@ -53,7 +54,7 @@ class UpdateUser extends Component {
     event.preventDefault()
     const token = decodeURIComponent(this.readCookie("X-CSRF-Token"));
     console.log("submitting form")
-    fetch("/api/v1/users/22",{
+    fetch(`/api/v1/users/${this.state.id}`,{
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -62,6 +63,7 @@ class UpdateUser extends Component {
       },
       body: JSON.stringify({
         user: {
+          phone_number: this.state.phone,
           gitHubUsername: this.state.gitHubUsername,
           sendReminders: this.state.sendReminders ? "true" : "false",
           email: this.state.email
@@ -94,7 +96,7 @@ class UpdateUser extends Component {
   }
 
   render () {
-    console.log(this.getCheckboxStatus())
+    console.log(this.state.phone)
     return(
       <div className="form_wrapper">
         <div className="edit_user">
@@ -110,6 +112,13 @@ class UpdateUser extends Component {
               label='email address'
               name='email'
               handlerFunction={this.handleConsumedChange}
+            />
+            <PhoneInput
+              showCountrySelect={false}
+              country="US"
+              placeholder="Enter phone number"
+              value={ this.state.phone }
+              onChange={ phone => this.setState({ phone }) }
             />
            <input
              type="checkbox"
