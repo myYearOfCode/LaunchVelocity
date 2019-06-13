@@ -8,7 +8,6 @@ class UpdateUser extends Component {
   constructor(props){
     super(props);
     this.state = {
-      phone: ''
     }
     this.handleConsumedChange = this.handleConsumedChange.bind(this);
     this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
@@ -27,7 +26,7 @@ class UpdateUser extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({id: body.id, gitHubUsername: body.gitHubUsername, email: body.email, sendReminders: body.sendReminders})
+      this.setState({id: body.id, gitHubUsername: body.gitHubUsername, email: body.email, sendReminders: body.sendReminders, phone: body.phone_number})
     })
     .catch(error => console.error( `Error in fetch: ${error.message}` ));
   }
@@ -98,7 +97,7 @@ class UpdateUser extends Component {
   }
 
   render () {
-    console.log(this.getCheckboxStatus())
+    console.log(this.state.phone)
     return(
       <div className="form_wrapper">
         <div className="edit_user">
