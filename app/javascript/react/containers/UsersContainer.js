@@ -75,7 +75,7 @@ class UsersContainer extends Component {
       <div>
         <div className="introBar">
           <div className="aboutMe">
-            This site is set up to visualize commits for the members of <a href="https://launchacademy.com/" >Launch Academy's </a> cohort 24. It helps to gamify our continued coding efforts and keeps it fun! You can filter by a few different measures and then click on photos or usernames to check out the actual github repos.
+            This site is set up to visualize commits for the members of <a href="https://launchacademy.com/" >Launch Academy's </a> cohort 24. It helps to gamify our continued coding efforts and keeps it fun! You can filter by a few different measures and then click on photos or usernames to check out the actual github repos. This tracks github commits that have been merged into master starting May 22nd (the day after graduation)
           </div>
           <div className="filterSelectorDiv">
             <label>Sort Users By:</label>
