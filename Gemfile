@@ -30,7 +30,7 @@ gem 'active_model_serializers'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-
+  gem 'rufo'
 end
 
 group :development do
