@@ -1,5 +1,12 @@
 import React from 'react';
 
+let displayBadges = (user_badges)  => {
+  let badges = []
+  for (let badge in user_badges) {
+    badges.push(<div>{user_badges[badge]}</div>)
+  }
+  return badges
+}
 const User = (props) => {
   return(
     <div className="user_wrapper">
@@ -18,6 +25,7 @@ const User = (props) => {
           className="userGraph"
           dangerouslySetInnerHTML={{ __html: props.user.graph }}
         />
+        {displayBadges(JSON.parse(props.user.user_badges))}
         <div className="user_right">
           <div className="currentStreak">
             Current Streak: {props.user.currentStreak} {props.user.currentStreak == 1 ? "day" : "days"}
