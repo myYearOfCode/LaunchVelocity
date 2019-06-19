@@ -2,6 +2,17 @@ require 'nokogiri'
 require 'open-uri'
 
 class User < ApplicationRecord
+  def getTitle
+    main_url = self.linkedInUrl
+    puts main_url
+    user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+
+    data = Nokogiri::HTML(open(main_url, "User-Agent" => user_agent, "Accept-Encoding" => "gzip, deflate"))
+    # graph = data.search(".js-calendar-graph-svg")
+    title = data.search("h2").search(".mt-1")
+    puts title
+  end
+
   def scrape
     main_url = "https://github.com/#{self.gitHubUsername}"
     data = Nokogiri::HTML(open(main_url))
@@ -15,6 +26,8 @@ class User < ApplicationRecord
     todaysDate = Date.strptime(DateTime.now.in_time_zone("Eastern Time (US & Canada)").strftime("%Y-%m-%d"), "%Y-%m-%d")
     startDate = Date.strptime("{ 2019-05-22 }", "{ %Y-%m-%d }")
     committedToday = false
+    user_badges = {}
+    badges = {1=>"first commit", 5=>"5 days", 7=>"one week", 14=>"two weeks", 25=>"25 days", 50=>"50 days"}
 
     days.each_with_index do |day, index|
       date = Date.strptime("{ #{day["data-date"]} }", "{ %Y-%m-%d }")
@@ -32,6 +45,9 @@ class User < ApplicationRecord
           currentStreak = 0
           currentLapse += 1
         end
+        if badges[currentStreak]
+          user_badges[currentStreak] = badges[currentStreak]
+        end
       end
       if date == todaysDate && date >= startDate
         numCommits = day["data-count"].to_i
@@ -44,7 +60,7 @@ class User < ApplicationRecord
       end
     end
     photoUrl = scrape_profile_pic(data)
-    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, currentLapse: currentLapse, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl, graph: graph)
+    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, currentLapse: currentLapse, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl, user_badges: user_badges.to_s, graph: graph)
   end
 
   def scrape_profile_pic(data)
