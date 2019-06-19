@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'json'
 
 class User < ApplicationRecord
   def getTitle
@@ -60,7 +61,7 @@ class User < ApplicationRecord
       end
     end
     photoUrl = scrape_profile_pic(data)
-    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, currentLapse: currentLapse, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl, user_badges: user_badges.to_s, graph: graph)
+    self.update(totalCommits: totalCommits, longestStreak: longestStreak, currentStreak: currentStreak, currentLapse: currentLapse, committedToday: committedToday, totalGreenDays: totalGreenDays, photoUrl: photoUrl, user_badges: user_badges.to_json, graph: graph)
   end
 
   def scrape_profile_pic(data)
